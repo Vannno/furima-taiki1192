@@ -1,0 +1,2 @@
+module FurimaTaiki1192Helper
+end
