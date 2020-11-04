@@ -13,7 +13,7 @@
 | katakana_lastname   | string | null: false |
 | katakana_firstname  | string | mull: false |
 ### Association
-- has_one  :record
+- has_many :records
 - has_many :items
 
 
