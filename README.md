@@ -43,6 +43,7 @@
 | delivery_source_id   | integer    | null:fa;se        |
 | days_ship_id         | integer    | null:false        |
 | value                | integer    | null:false        |
+| user                 | references | foreign_key: true |
 ### Association
 - belongs_to :user
 - has_one :record
