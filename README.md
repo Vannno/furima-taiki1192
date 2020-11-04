@@ -22,11 +22,11 @@
 ## records テーブル
 | Column        | Type       | Options           |
 | ------        | ---------- | -----------       |
-| user_name     | reference  | foreign_key: true |
+| user_name     | references | foreign_key: true |
 | purchase_date | references | foreign_key: true |
 | items_name    | referenses | foreign_key: true |
-| user_id       | reference  | foreign_key: true |
-| item_id       | references | foreign_key: true |
+| user          
+| item          
 ### Association
  - belongs_to :user 
  - belongs_to :item
@@ -52,22 +52,16 @@
 - belongs_to :address
 
 
-## record参照　テーブル
- | Column         | Type      | Options       |
- | --------       | ------    | -----------   |
-
-
-
 ## addresses テーブル
 
-| Column         | Type      | Options       |
-| --------       | ------    | -----------   |
-| postal_number  | string    | null: false   |
-| prefecture_id  | integer   | null: false   |
-| city           | string    | null: false   |
-| place          | string    | null: false   |
+| Column         | Type       | Options          |
+| --------       | ------     | -----------      |
+| prefecture_id  | integer    | null: false      |
+| city           | string     | null: false      |
+| place          | string     | null: false      |
 | building_name  | string    
-| phone_number   | string    | null: false   |
+| phone_number   | string     | null: false      |
+| record         | references | foreign_key:true |
 ### Association
 - has_one_attached  : record
 
