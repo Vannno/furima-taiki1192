@@ -45,15 +45,14 @@
 | value                | integer    | null:false        |
 ### Association
 - belongs_to :user
-- has_many :records
-- belongs_to :address
+- has_one :record
 
 
 ## addresses テーブル
 
 | Column         | Type       | Options          |
 | --------       | ------     | -----------      |
-| Postal_code    | integer    | null: false
+| postal_code    | string     | null: false
 | prefecture_id  | integer    | null: false      |
 | city           | string     | null: false      |
 | place          | string     | null: false      |
