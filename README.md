@@ -23,14 +23,11 @@
 | Column        | Type       | Options           |
 | ------        | ---------- | -----------       |
 | user_name     | references | foreign_key: true |
-| purchase_date | references | foreign_key: true |
-| items_name    | referenses | foreign_key: true |
-| user          
-| item          
+| items_name    | references | foreign_key: true |
 ### Association
  - belongs_to :user 
  - belongs_to :item
- - belongs_ to :address
+ - has_one :address
 
 
 
@@ -63,6 +60,7 @@
 | phone_number   | string     | null: false      |
 | record         | references | foreign_key:true |
 ### Association
-- has_one_attached  : record
+- belongs_to :record
+ 
 
 
