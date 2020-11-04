@@ -13,17 +13,17 @@
 | katakana_lastname   | string | null: false |
 | katakana_firstname  | string | mull: false |
 ### Association
-- has_many :records
+- has_one  :record
 - has_many :items
-- has_one_attached :addresses
+
 
 
 
 ## records テーブル
 | Column        | Type       | Options           |
 | ------        | ---------- | -----------       |
-| user_name     | references | foreign_key: true |
-| items_name    | references | foreign_key: true |
+| user          | references | foreign_key: true |
+| item          | references | foreign_key: true |
 ### Association
  - belongs_to :user 
  - belongs_to :item
@@ -53,10 +53,11 @@
 
 | Column         | Type       | Options          |
 | --------       | ------     | -----------      |
+| Postal_code    | integer    | null: false
 | prefecture_id  | integer    | null: false      |
 | city           | string     | null: false      |
 | place          | string     | null: false      |
-| building_name  | string    
+| building_name  | string
 | phone_number   | string     | null: false      |
 | record         | references | foreign_key:true |
 ### Association
