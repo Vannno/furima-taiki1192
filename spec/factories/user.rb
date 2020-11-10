@@ -14,9 +14,3 @@ end
 
 
 
-# validates :nickname, presence: true
-#   validates :birthday, presence: true
-#   validates :lastname, presence: true
-#   validates :firstname, presence: true
-#   validates :katakana_lastname, presence: true
-#   validates :katakana_firstname, presence: true 
