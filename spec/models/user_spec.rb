@@ -7,77 +7,11 @@ describe User do
 
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
-      it 'nicknameがあると登録できる'do
-        @user.nickname = "ばん"
-        expect(@user).to be_valid
-      end
-      it 'emailがあれば登録できる' do
-        @user.email = "to@to"
-        @user.valid?
-        expect(@user).to be_valid
-      end
-      it 'emailが重複してない場合登録できる' do
-        @user.email = "ga@ga"
-        another_user = FactoryBot.build(:user, email: @user.email)
-        expect(another_user).to be_valid     
-      end
-      it 'emailが＠を含む場合保存ができる' do
-        @user.email = "ss@ss"
-        @user.valid?
-        expect(@user).to be_valid
-      end
-      it "passwordが入力されていれば登録できる" do
-        @user.password = "taiki1192"
-        @user.valid?
-        expect(@user).to be_valid
-      end
-      it "passwordが６文字以上だと登録できる" do
-        @user.password = "taiki1192"
-        @user.password_confirmation = "taiki1192"
-        @user.valid?
-        expect(@user).to be_valid
-      end
-      it "passswordは半角英数字混合であれば登録できる" do
-        @user.password = 'taiki1192'
-        @user.valid?
-        expect(@user).to be_valid
-      end
-      it "passwordは確認用含めて２回入力すれば登録できる" do
-        @user.password_confirmation = "taiki1192"
-        @user.valid?
-        expect(@user).to be_valid
-      end
-      it "lastnameを入力すれば保存される" do
-        @user.lastname = "坂野"
-        @user.valid?
-        expect(@user).to be_valid
-      end
-      it "firstnameを入力すれば登録できる" do
-        @user.firstname = "太軌"
-        @user.valid?
-        expect(@user).to be_valid
-      end
-      it "ユーザー本名は、全角（漢字・ひらがな・カタカナ）で入力する" do
-        @user.firstname = "坂野太軌"
-        @user.valid?
-        expect(@user).to be_valid
-      end
-      it "katakana_lastnameを入力する" do
-        @user.katakana_lastname = "バンノ"
-        @user.valid?
-        expect(@user).to be_valid
-      end
-      it "katakana_firstnameは全角（カタカナ）で入力する" do
-        @user.katakana_firstname = "タイキ"
-        @user.valid?
-        expect(@user).to be_valid
-      end
-      it "birthdayが入力されていれば登録できる" do
-        @user.birthday = "1995-11-22"
-        @user.valid?
-        expect(@user).to be_valid
+      it '全ての項目が満たされていれば登録できる' do
+         expect(@user).to be_valid
       end
     end
+      
     
     context '新規登録がうまくいかないとき' do
       it "nicknameが空だと登録できない" do
