@@ -3,11 +3,12 @@ FactoryBot.define do
     name                  {"傘"}
     info                  {"この傘は便利です"}
     category_id           {2}
-    status_id             {2}
+    status_id             {1}
     burden_id             {2}
-    area_id               {2}
+    area_id               {1}
     ship_id               {2}
     value                 {600}
+    
     association :user
     
     after(:build) do |item|

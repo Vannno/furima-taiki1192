@@ -57,6 +57,21 @@ describe User do
         @item.valid? 
         expect(@item.errors.full_messages).to include("Value can't be blank")
       end
+      it '299円以下では登録できないこと' do
+        @item.value = "120"
+        @item.valid? 
+        expect(@item.errors.full_messages).to include("Value must be greater than or equal to 300")
+      end
+      it '10,000,000以上では登録できないこと' do
+        @item.value = "12000000"
+        @item.valid? 
+        expect(@item.errors.full_messages).to include("Value must be less than or equal to 9999999")
+      end
+      it '各activehashの項目が0のとき（−−が選択されたとき）に登録できない' do
+        @item.category_id = 0
+        @item.valid? 
+        expect(@item.errors.full_messages).to include("Category must be other than 0")
+      end
     end
   end
 end
