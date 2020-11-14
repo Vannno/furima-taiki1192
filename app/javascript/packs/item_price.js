@@ -13,26 +13,4 @@ window.addEventListener('load', () => {
 });
 
 
-// const TAX = 1.08;
 
-// export function addConsumptionTax(price) {
-//     const floatTax = price * TAX; //消費税計算(消費税付き)
-//     return Math.round(floatTax);  //四捨五入
-// }
-
-// addConsumptionTax(1000); //=> 1080
-
-
-// Math.floor(数値)
-
-// const Tax = 1.08;
-// var priceBeforeTax = 999;
-// var price = priceBeforeTax * Tax;
-// // 四捨五入のコード追加
-// var priceAfterTax = Math.round(price);
-
-// console.log(price);
-// console.log(priceAfterTax);
-// // 結果
-// 1078.92
-// 1079
