@@ -67,10 +67,30 @@ describe User do
         @item.valid? 
         expect(@item.errors.full_messages).to include("Value must be less than or equal to 9999999")
       end
-      it '各activehashの項目が0のとき（−−が選択されたとき）に登録できない' do
+      it 'categoryのidが0のとき（−−が選択されたとき）に登録できない' do
         @item.category_id = 0
         @item.valid? 
         expect(@item.errors.full_messages).to include("Category must be other than 0")
+      end
+      it 'statusのidが0のとき（−−が選択されたとき）に登録できない' do
+        @item.status_id = 0
+        @item.valid? 
+        expect(@item.errors.full_messages).to include("Status must be other than 0")
+      end
+      it 'burdenのidが0のとき（−−が選択されたとき）に登録できない' do
+        @item.burden_id = 0
+        @item.valid? 
+        expect(@item.errors.full_messages).to include("Burden must be other than 0")
+      end
+      it 'areaのidが0のとき（−−が選択されたとき）に登録できない' do
+        @item.area_id = 0
+        @item.valid? 
+        expect(@item.errors.full_messages).to include("Area must be other than 0")
+      end
+      it 'shipのidが0のとき（−−が選択されたとき）に登録できない' do
+        @item.ship_id = 0
+        @item.valid? 
+        expect(@item.errors.full_messages).to include("Ship must be other than 0")
       end
     end
   end
