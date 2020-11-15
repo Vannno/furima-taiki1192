@@ -21,6 +21,8 @@ class Item < ApplicationRecord
   has_one :record
   has_one_attached :image
   belongs_to :burden
-  
-
+  belongs_to :category
+  belongs_to :area
+  belongs_to :ship
+  belongs_to :status
 end
