@@ -36,6 +36,8 @@ class ItemsController < ApplicationController
   def destroy
     if @item.destroy
       redirect_to root_path
+    else
+      render :show
     end
   end
 
@@ -47,9 +49,6 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-    unless @item.user_id
-      redirect_to root_path
-    end
   end
 
   def move_to_index
