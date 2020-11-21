@@ -1,17 +1,17 @@
 class RecordController < ApplicationController
   before_action :authenticate_user!
-  
+  before_action :get_item, only: [:index, :create, :pay_item]
+
+
   def index
     @purchases = Purchase.new
-    @item = Item.find(params[:item_id])
-    unless user_signed_in? && @item.user_id
+    if user_signed_in? && @item.user_id
       redirect_to root_path
     end
   end
 
   def create
     @purchases = Purchase.new(purchase_params)
-    @item = Item.find(params[:item_id])
     if @purchases.valid?
       pay_item
       @purchases.save
@@ -34,12 +34,16 @@ class RecordController < ApplicationController
 
   def pay_item
     @item = Item.find(params[:item_id])
-    Payjp.api_key = "sk_test_eeef3775bead8925b8d5334d"  
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.value,  
       card:  params[:token],    
       currency: 'jpy'                 
     )
+  end
+
+  def get_item
+    @item = Item.find(params[:item_id])
   end
 
 end

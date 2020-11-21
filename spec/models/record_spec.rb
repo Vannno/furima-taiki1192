@@ -1,17 +1,22 @@
 require 'rails_helper'
-    describe User do
-      before do
-        @user = FactoryBot.build(:user)
-        @item = FactoryBot.build(:item)
-        @purchases = FactoryBot.build(:purchase)
-      end
+  describe User do
+    before do
+      @user = FactoryBot.build(:user)
+      @item = FactoryBot.build(:item)
+      @purchases = FactoryBot.build(:purchase)
+    end
+  
 
-    describe Record do
-      context 'itemが保存されるとき' do
-        it '全ての項目が満たされていれば,商品の購入ができる' do
-          expect(@purchases).to be_valid
+      describe Record do
+        context '商品の購入が成功するとき' do
+          it '全ての項目が満たされていれば,商品の購入ができる' do
+            expect(@purchases).to be_valid
+          end
+          it 'building_nameが入力されていなくても購入ができる' do
+            @purchases.building_name = ""
+            expect(@purchases).to be_valid 
+          end
         end
-      end
 
     context '商品の購入ができないとき' do
       it '郵便番号の入力がなければ購入できない'do
@@ -48,6 +53,21 @@ require 'rails_helper'
         @purchases.phone_number = "111122223333"
         @purchases.valid?
         expect(@purchases.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+      end
+      it '都道府県で、0（−−）が選択されたときに登録できない' do
+        @purchases.prefecture_id = 0
+        @purchases.valid? 
+        expect(@purchases.errors.full_messages).to include ("Prefecture must be other than 0")
+      end
+      it '都道府県が空だと登録できない' do
+        @purchases.prefecture_id = ""
+        @purchases.valid? 
+        expect(@purchases.errors.full_messages).to include("Prefecture can't be blank", "Prefecture is not a number")
+      end
+      it 'tokenが空だと登録出来ないこと' do
+        @purchases.token = ""
+        @purchases.valid?
+        expect(@purchases.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
