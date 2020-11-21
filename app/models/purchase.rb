@@ -8,7 +8,6 @@ class Purchase
     validates :prefecture_id
     validates :city
     validates :place
-    validates :building_name
     validates :phone_number, length: { maximum: 11}
     validates :phone_number, numericality: true
     validates :item_id       
