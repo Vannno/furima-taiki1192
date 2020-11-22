@@ -1,6 +1,6 @@
 class RecordController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_item, only: [:index, :create, :pay_item]
+  before_action :get_item, only: [:index, :create]
 
 
   def index
@@ -15,7 +15,7 @@ class RecordController < ApplicationController
     if @purchases.valid?
       pay_item
       @purchases.save
-        redirect_to root_path
+      redirect_to root_path
     else
       render 'index'
     end
@@ -33,7 +33,7 @@ class RecordController < ApplicationController
   end
 
   def pay_item
-    @item = Item.find(params[:item_id])
+    get_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.value,  
