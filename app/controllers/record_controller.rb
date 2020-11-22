@@ -5,8 +5,9 @@ class RecordController < ApplicationController
 
   def index
     @purchases = Purchase.new
-    if user_signed_in? && @item.user_id
+    if current_user.id == @item.user_id 
       redirect_to root_path
+    else 
     end
   end
 
@@ -33,7 +34,6 @@ class RecordController < ApplicationController
   end
 
   def pay_item
-    get_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.value,  
