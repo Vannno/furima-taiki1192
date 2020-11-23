@@ -22,7 +22,6 @@ class RecordController < ApplicationController
   end
 
 
-
   private
   def purchase_params
     params.permit(:postal_code, :prefecture_id, :city, :place, :building_name, :phone_number, :item_id, :token).merge(user_id: current_user.id)
