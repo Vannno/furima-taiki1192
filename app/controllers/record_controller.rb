@@ -28,15 +28,11 @@ class RecordController < ApplicationController
     params.permit(:postal_code, :prefecture_id, :city, :place, :building_name, :phone_number, :item_id, :token).merge(user_id: current_user.id)
   end
 
-  def record_params
-    params.require(:record).permit(:value).merge(token: params[:token])
-  end
-
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: @item.value,  
-      card:  params[:token],    
+      amount: @item.value,
+      card:  purchase_params[:token],    
       currency: 'jpy'                 
     )
   end
